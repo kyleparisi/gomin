@@ -1,4 +1,5 @@
-# expiration.dev
+# gomin 
 
-A project to monitor the things that expire.
+A practice run at golang crud framework.  Might return to this. 
+
 
