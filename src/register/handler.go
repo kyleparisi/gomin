@@ -15,6 +15,7 @@ import (
 	"net/mail"
 	"os"
 	"strings"
+	"time"
 )
 
 type Register struct {
@@ -104,7 +105,8 @@ func PostHandler(db *sql.DB, session *sessions.Session) func(_ urlpath.Match, bo
 			log.Printf("RegisterHandler: failed to make hash password: %s\n", err.Error())
 			return framework.Response{StatusCode: 500}
 		}
-		res, err := db.Exec("INSERT INTO app_user(`name`, email, password) VALUES('', ?, ?)", strings.ToLower(register.Email), string(hash))
+		now := time.Now()
+		res, err := db.Exec("INSERT INTO app_user(created_at, updated_at, `name`, email, password) VALUES(?, ?, '', ?, ?)", now, now, strings.ToLower(register.Email), string(hash))
 		if err != nil {
 			log.Printf("RegisterHandler: failed to register user: %s\n", err.Error())
 			return framework.Response{StatusCode: 500}

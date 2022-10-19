@@ -41,7 +41,14 @@ for row in data:
     if data_type in ["float"]:
         objects[table_name][column_name]["data_type"] = "float64"
 
-print(f"""package app""")
+    if data_type in ["date", "datetime"]:
+            objects[table_name][column_name]["data_type"] = "time.Time"
+
+print("""package app""")
+print('''
+import (
+    "time"
+)''')
 
 for key in objects:
     print(f"""
