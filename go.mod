@@ -1,4 +1,4 @@
-module github.com/kyleparisi/expiration.dev
+module gomin
 
 go 1.14
 

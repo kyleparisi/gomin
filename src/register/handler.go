@@ -5,15 +5,15 @@ import (
 	"encoding/json"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/sessions"
-	"github.com/kyleparisi/expiration.dev/src/app"
-	"github.com/kyleparisi/expiration.dev/src/framework"
 	"github.com/ucarion/urlpath"
 	"golang.org/x/crypto/bcrypt"
+	"gomin/src/app"
+	"gomin/src/framework"
 	"html/template"
-	"os"
 	"io"
 	"log"
 	"net/mail"
+	"os"
 	"strings"
 )
 
@@ -31,7 +31,7 @@ type RegisterError struct {
 }
 
 func GetHandler(db *sql.DB, session *sessions.Session) func(_ urlpath.Match) framework.Response {
-	return func (_ urlpath.Match) framework.Response {
+	return func(_ urlpath.Match) framework.Response {
 		t, err := template.ParseFiles(os.Getenv("APP_DIR") + "/views/register.gohtml")
 		if err != nil {
 			panic(err)

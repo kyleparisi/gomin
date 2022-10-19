@@ -3,9 +3,9 @@ package login
 import (
 	"bytes"
 	"encoding/json"
-	"github.com/kyleparisi/expiration.dev/src/framework"
-	"github.com/kyleparisi/expiration.dev/src/register"
 	"github.com/ucarion/urlpath"
+	"gomin/src/framework"
+	"gomin/src/register"
 	"gotest.tools/v3/assert"
 	"net/http"
 	"testing"

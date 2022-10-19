@@ -3,8 +3,8 @@ package register
 import (
 	"bytes"
 	"encoding/json"
-	"github.com/kyleparisi/expiration.dev/src/framework"
 	"github.com/ucarion/urlpath"
+	"gomin/src/framework"
 	"gotest.tools/v3/assert"
 	"net/http"
 	"strings"

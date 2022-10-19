@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/kyleparisi/expiration.dev/src/framework"
-	"github.com/kyleparisi/expiration.dev/src/login"
-	"github.com/kyleparisi/expiration.dev/src/register"
+	"gomin/src/framework"
+	"gomin/src/login"
+	"gomin/src/register"
 	"log"
 	"net/http"
 )
