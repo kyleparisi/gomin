@@ -1,10 +1,11 @@
 import MySQLdb
 import os
 
-dbconnect = MySQLdb.connect(os.getenv("DB_HOST"), os.getenv("DB_USERNAME"), os.getenv("DB_PASSWORD"), os.getenv("DB_DATABASE"))
+db_database = os.getenv("DB_DATABASE")
+dbconnect = MySQLdb.connect(os.getenv("DB_HOST"), os.getenv("DB_USERNAME"), os.getenv("DB_PASSWORD"), db_database)
 
 cursor = dbconnect.cursor()
-cursor.execute("SELECT * FROM information_schema.columns WHERE table_schema = 'expirationdotdev_local';")
+cursor.execute(f"SELECT * FROM information_schema.columns WHERE table_schema = '{db_database}';")
 
 
 def convert_to_go(name):
@@ -31,8 +32,11 @@ for row in data:
     if data_type in ["longtext", "varchar"]:
         objects[table_name][column_name]["data_type"] = "string"
 
-    if data_type in ["bigint", "int"]:
+    if data_type in ["int"]:
         objects[table_name][column_name]["data_type"] = "int"
+
+    if data_type in ["bigint"]:
+        objects[table_name][column_name]["data_type"] = "int64"
 
     if data_type in ["float"]:
         objects[table_name][column_name]["data_type"] = "float64"

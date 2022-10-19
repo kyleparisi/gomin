@@ -2,7 +2,7 @@ package app
 
 type AppUser struct {
   Email string
-  Id int
+  Id int64
   Name string
   Password string
 }
